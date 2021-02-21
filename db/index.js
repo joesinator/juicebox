@@ -82,6 +82,7 @@ async function createTags(tagList){
     const {rows} = await client.query(`
     SELECT * FROM tags WHERE name IN (${selectValues})
     `, tagList);
+    console.log(response, rows);
     return rows;
   } catch (error) {
     throw error;
@@ -144,12 +145,10 @@ async function getPostById(postId){
 };
 
 async function updateUser(id, fields = {}) {
-    // build the set string
     const setString = Object.keys(fields).map(
       (key, index) => `"${ key }"=$${ index + 1 }`
     ).join(', ');
   
-    // return early if this is called without fields
     if (setString.length === 0) {
       return;
     };
@@ -172,7 +171,6 @@ async function updateUser(id, fields = {}) {
     const {tags} = fields;
     delete fields.tags;
     
-    // build the set string
     const setString = Object.keys(fields).map(
       (key, index) => `"${ key }"=$${ index + 1 }`
     ).join(', ');

@@ -69,21 +69,15 @@ postsRouter.post('/', requireUser, async(req, res, next) => {
     };
 
     try{
-        // add authorId, title, content to postData object
         postData.authorId = req.user.id;
         postData.title = title;
         postData.content = content;
-        // const post = await createPost(postData);
         const post = await createPost(postData);
-        // this will create the post and the tags for us
-
-        // if the post comes back, res.send({ post });
         if(post){
             res.send({post});
         }else{
             next({error: "Post was not created"});
-        }
-        // otherwise, next an appropriate error object 
+        };
     }catch({name, message}){
         next({name, message});
     };
