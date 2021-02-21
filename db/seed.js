@@ -70,7 +70,7 @@ async function dropTables(){
         `);
         console.log("Finished dropping tables!");
     } catch (error) {
-        console.error("Error dropping tables!");
+        console.log("Error dropping tables!");
         throw error;
     }
 };
