@@ -61,14 +61,14 @@ async function createInitialPosts(){
 
 async function dropTables(){
     try{
-        console.log("Starting to drop tables...");
+        console.log("Starting to drop tables...")
         await client.query(`
         DROP TABLE IF EXISTS post_tags;
         DROP TABLE IF EXISTS tags;
         DROP TABLE IF EXISTS posts;
         DROP TABLE IF EXISTS users;
-        `);
-        console.log("Finished dropping tables!");
+        `)
+        console.log("Finished dropping tables!")
     } catch (error) {
         console.log("Error dropping tables!");
         throw error;
